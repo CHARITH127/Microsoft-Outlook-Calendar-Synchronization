@@ -9,7 +9,6 @@ import {MsalService} from "@azure/msal-angular";
 export class GraphService {
   private graphUrl = 'https://graph.microsoft.com/v1.0/me/events'; // Microsoft Graph API URL
   private timeZoneSubject = new BehaviorSubject<string>('UTC'); // Default time zone
-  timeZone$ = this.timeZoneSubject.asObservable(); // Observable to provide time zone updates
 
   constructor(private http: HttpClient, private authService: MsalService) {}
 

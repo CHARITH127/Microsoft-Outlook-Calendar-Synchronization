@@ -4,10 +4,8 @@ import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import { MsalService } from '@azure/msal-angular';
 import {createEventId, INITIAL_EVENTS} from '../services/event-utils';
 import { GraphService } from '../services/graph.service';
-import { Calendar } from '@fullcalendar/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import * as moment from 'moment-timezone';
 

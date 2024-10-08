@@ -39,7 +39,6 @@ export class AppComponent implements OnInit{
     }).subscribe({
       next: (result) => {
         this.authService.instance.setActiveAccount(result.account);
-        console.log(result);
         this.loadEventsOnLogin();
 
         // Call the method to get user timezone after login
@@ -54,9 +53,7 @@ export class AppComponent implements OnInit{
   private getUserTimeZone() {
     this.graphService.getUserMailboxSettings().subscribe({
       next: (response) => {
-        console.log('Mailbox Settings Response:', response);
         if (response && response.timeZone) {
-          console.log('User Time Zone:', response.timeZone);
           this.graphService.setTimeZone(response.timeZone)
         } else {
           console.warn('Time zone information is missing from the response');
