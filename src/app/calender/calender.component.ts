@@ -126,19 +126,18 @@ export class CalenderComponent implements OnInit{
         isAllDay: selectInfo.allDay
       };
 
-      // Add event to FullCalendar
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay
-      });
-
       // Call the service to save the event to Microsoft Graph
       this.graphService.createEvent(newEvent).subscribe({
         next: (response) => {
-          console.log('Event created in Outlook calendar:', response);
+          console.log('Event created in Outlook calendar with ID:', response.id);
+          // Add the event to FullCalendar using the ID from Microsoft Graph
+          calendarApi.addEvent({
+            id: response.id, // Use the ID from Microsoft Graph response
+            title,
+            start: selectInfo.startStr,
+            end: selectInfo.endStr,
+            allDay: selectInfo.allDay
+          });
         },
         error: (error) => {
           console.error('Error creating event in Outlook calendar:', error);
